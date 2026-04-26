@@ -18,8 +18,8 @@ export const translations = {
       cta: "Book Free Consultation",
       stats: {
         transformed: "500+ Clients Transformed",
-        years: "Years Exp",
-        success: "Success",
+        years: "8+ Years Exp",
+        success: "95% Success",
         certified: "Certified"
       }
     },
@@ -34,6 +34,18 @@ export const translations = {
         { title: "Weekly Check-ins", desc: "Detailed video or voice feedback every week to audit your progress and adjust the strategy." },
         { title: "Form Analysis", desc: "Send videos of your lifts for frame-by-frame breakdown to maximize gain and prevent injury." },
         { title: "24/7 Support", desc: "Direct WhatsApp communication for any questions about training, diet, or motivation." }
+      ]
+    },
+    transformations: {
+      tag: "Proven Results",
+      title: "Real People, Real Evolution.",
+      subtitle: "These aren't just photos. They are the product of 90 days of discipline, structured training, and relentless execution. Drag the slider to see the transformation.",
+      disclaimer: "*Results vary based on individual effort, nutrition, and consistency. No shortcuts taken.",
+      items: [
+        { name: "Ahmed K.", time: "12 Weeks", result: "-12kg Fat, +4kg Muscle", type: "Fat Loss" },
+        { name: "Omar M.", time: "16 Weeks", result: "Total Physique Rebirth", type: "Muscle Gain" },
+        { name: "Sara T.", time: "10 Weeks", result: "Athletic Conditioning", type: "Body Recomp" },
+        { name: "Youssef Z.", time: "90 Days", result: "Elite Ab Definition", type: "Core Focus" }
       ]
     },
     problem: {
@@ -59,7 +71,7 @@ export const translations = {
       tag: "Meet Your Coach",
       name: "HOSSAM YOUSEF",
       p1: "I don't believe in quick fixes or metabolic 'tricks.' I believe in the relentless pursuit of excellence through science, data, and hard work.",
-      p2: "My mission is to help you bypass years of trial and error. Over the last 8 years, I've refined a 90-day protocol that has transformed hundreds of physiques across the globe.",
+      p2: "My mission is to help you bypass years of trial and error. Over the last 8+ years, I've refined a 90-day protocol that has transformed hundreds of physiques across the globe.",
       points: [
         "International Fitness & Nutrition Certified",
         "Specialist in Body Recomposition",
@@ -68,11 +80,37 @@ export const translations = {
       ],
       cta: "Connect on Instagram",
       stats: {
-        clients: "Happy Clients",
-        success: "Success Rate",
-        exp: "Experience",
-        certs: "Certifications"
+        clients: "500+ Happy Clients",
+        success: "95% Success Rate",
+        exp: "8+ Years",
+        certs: "12+ Certifications"
       }
+    },
+    faq: {
+      tag: "Information",
+      title: "Common Questions",
+      items: [
+        {
+          q: "Is it beginner friendly?",
+          a: "Absolutely. In fact, it's better for beginners to start with a system to avoid building bad habits or injuring themselves early on. We tailor everything to your current level."
+        },
+        {
+          q: "Do I need a gym?",
+          a: "No. While a gym is recommended for maximum hypertrophy, I can design elite home-based workouts if you have basic equipment (dumbbells/bands) or even just bodyweight for a start."
+        },
+        {
+          q: "How does the weekly follow-up work?",
+          a: "Every weekend, you'll submit a check-in form with your data, workout logs, and optional physique photos. I then provide a video or voice audit reviewing your progress and updating your strategy for the next week."
+        },
+        {
+          q: "Can I still eat my favorite foods?",
+          a: "Yes. My 'Flexi-Science' approach focuses on hitting your macros. As long as you follow the core structure, you can enjoy treats without ruining your progress."
+        },
+        {
+          q: "What if I travel frequently for work?",
+          a: "I specialize in high-performance individuals who travel. I'll provide you with hotel-gym workouts and a travel nutrition guide to keep you on track regardless of where you are in the world."
+        }
+      ]
     },
     pricing: {
       tag: "Pricing Models",
@@ -109,7 +147,7 @@ export const translations = {
       subtitle: "Seats are limited to maintaining the highest standard of coaching. Apply today to secure your spot in the next intake.",
       items: [
         { label: "WhatsApp", value: "+20 111 621 4309" },
-        { label: "Email", value: "hossam.physique@gmail.com" },
+        { label: "Email", value: "eyadfarouk539@gmail.com" },
         { label: "Instagram", value: "@j0e309" }
       ]
     }
@@ -132,8 +170,8 @@ export const translations = {
       cta: "احجز استشارة مجانية",
       stats: {
         transformed: "تحول أكثر من ٥٠٠ عميل",
-        years: "سنوات خبرة",
-        success: "نسبة نجاح",
+        years: "٨+ سنوات خبرة",
+        success: "٩٥٪ نسبة نجاح",
         certified: "مدرب معتمد"
       }
     },
@@ -148,6 +186,18 @@ export const translations = {
         { title: "متابعة أسبوعية", desc: "ملاحظات تفصيلية بالفيديو أو الصوت كل أسبوع لمراقبة تقدمك وتعديل الاستراتيجية." },
         { title: "تحليل الأداء البدني", desc: "أرسل فيديوهات لتمارينك لتحليلها بدقة لضمان أفضل نتائج وتجنب الإصابات." },
         { title: "دعم على مدار الساعة", desc: "تواصل مباشر عبر الواتساب لأي استفسارات حول التدريب أو الدايت أو التحفيز." }
+      ]
+    },
+    transformations: {
+      tag: "نتائج مثبتة",
+      title: "أشخاص حقيقيون، تطور حقيقي.",
+      subtitle: "هذه ليست مجرد صور. إنها نتاج ٩٠ يوماً من الانضباط، والتدريب المنظم، والتنفيذ الدؤوب. اسحب المنزلق لرؤية التحول.",
+      disclaimer: "*تختلف النتائج بناءً على الجهد الفردي، والتغذية، والاستمرارية. لا توجد اختصارات.",
+      items: [
+        { name: "أحمد ك.", time: "١٢ أسبوعاً", result: "-١٢ كجم دهون، +٤ كجم عضلات", type: "خسارة دهون" },
+        { name: "عمر م.", time: "١٦ أسبوعاً", result: "إعادة ولادة كاملة للجسم", type: "زيادة عضلات" },
+        { name: "سارة ت.", time: "١٠ أسابيع", result: "تكييف رياضي", type: "إعادة تشكيل الجسم" },
+        { name: "يوسف ز.", time: "٩٠ يوماً", result: "تعريف عضلات بطن متميز", type: "تركيز على البطن" }
       ]
     },
     problem: {
@@ -173,7 +223,7 @@ export const translations = {
       tag: "تعرف على مدربك",
       name: "حسام يوسف",
       p1: "لا أؤمن بالحلول السريعة أو الخدع الغذائية. أؤمن بالسعي الدؤوب نحو التميز من خلال العلم والبيانات والعمل الجاد.",
-      p2: "مهمتي هي مساعدتك على اختصار سنوات من التجربة والخطأ. خلال الثماني سنوات الماضية، قمت بتطوير بروتوكول الـ ٩٠ يوماً الذي غير أجسام المئات حول العالم.",
+      p2: "مهمتي هي مساعدتك على اختصار سنوات من التجربة والخطأ. خلال الـ ٨+ سنوات الماضية، قمت بتطوير بروتوكول الـ ٩٠ يوماً الذي غير أجسام المئات حول العالم.",
       points: [
         "شهادة دولية في اللياقة البدنية والتغذية",
         "أخصائي في إعادة تشكيل الجسم",
@@ -182,11 +232,37 @@ export const translations = {
       ],
       cta: "تابعني على انستجرام",
       stats: {
-        clients: "عملاء سعداء",
-        success: "نسبة النجاح",
-        exp: "سنوات الخبرة",
-        certs: "الشهادات"
+        clients: "٥٠٠+ عميل سعيد",
+        success: "٩٥٪ نسبة النجاح",
+        exp: "٨+ سنوات خبرة",
+        certs: "١٢+ شهادات"
       }
+    },
+    faq: {
+      tag: "معلومات",
+      title: "الأسئلة الشائعة",
+      items: [
+        {
+          q: "هل هو مناسب للمبتدئين؟",
+          a: "بالتأكيد. في الواقع، من الأفضل للمبتدئين البدء بنظام لتجنب بناء عادات سيئة أو إصابة أنفسهم في وقت مبكر. نحن نصمم كل شيء حسب مستواك الحالي."
+        },
+        {
+          q: "هل أحتاج إلى صالة رياضية؟",
+          a: "لا. بينما يوصى بالصالة الرياضية لأقصى ضخامة عضلية، يمكنني تصميم تمارين منزلية متميزة إذا كان لديك معدات أساسية (دمبلز/أربطة) أو حتى بوزن الجسم فقط للبداية."
+        },
+        {
+          q: "كيف يعمل المتابعة الأسبوعية؟",
+          a: "في كل عطلة نهاية أسبوع، ستقدم نموذج متابعة ببياناتك، وسجلات تمارينك، وصور اختيارية لجسمك. ثم أقدم مراجعة بالفيديو أو الصوت لمراجعة تقدمك وتحديث استراتيجيتك للأسبوع القادم."
+        },
+        {
+          q: "هل لا يزال بإمكاني تناول أطعمي المفضلة؟",
+          a: "نعم. يركز نهجي 'Flexi-Science' على الوصول إلى الماكروز الخاصة بك. طالما تتبع الهيكل الأساسي، يمكنك الاستمتاع ببعض الحلويات دون إفساد تقدمك."
+        },
+        {
+          q: "ماذا لو كنت أسافر كثيراً للعمل؟",
+          a: "أنا متخصص في الأفراد ذوي الأداء العالي الذين يسافرون. سأوفر لك تمارين لصالات الفنادق ودليل تغذية للسفر للحفاظ على مسارك بغض النظر عن مكان وجودك في العالم."
+        }
+      ]
     },
     pricing: {
       tag: "باقات الأسعار",
@@ -223,7 +299,7 @@ export const translations = {
       subtitle: "المقاعد محدودة لضمان أعلى معايير التدريب. ابدأ اليوم لحجز مكانك في الدفعة القادمة.",
       items: [
         { label: "واتساب", value: "+20 111 621 4309" },
-        { label: "إيميل", value: "hossam.physique@gmail.com" },
+        { label: "إيميل", value: "eyadfarouk539@gmail.com" },
         { label: "انستجرام", value: "@j0e309" }
       ]
     }

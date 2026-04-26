@@ -14,8 +14,11 @@ import { FAQ } from './components/sections/FAQ';
 import { Contact, Footer } from './components/sections/Contact';
 import { motion } from 'motion/react';
 import { Button } from './components/ui/Button';
+import { MessageCircle } from 'lucide-react';
+import { useLanguage } from './hooks/useLanguage';
 
 export default function App() {
+  const { lang } = useLanguage();
   return (
     <main className="relative bg-background text-foreground selection:bg-gold selection:text-background font-sans min-h-screen border-x-0 md:border-8 border-[#1a1a1a] overflow-x-hidden">
       {/* Geometric Background Overlays */}
@@ -90,6 +93,18 @@ export default function App() {
          </Button>
       </div>
       </div>
+
+      <motion.a 
+        href="https://wa.me/201116214309"
+        target="_blank"
+        rel="noopener noreferrer"
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        whileHover={{ scale: 1.1 }}
+        className={`fixed z-50 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-2xl shadow-[#25D366]/40 ${lang === 'ar' ? 'bottom-24 left-4 sm:bottom-10 sm:left-10' : 'bottom-24 right-4 sm:bottom-10 sm:right-10'}`}
+      >
+        <MessageCircle size={28} className="sm:w-8 sm:h-8" />
+      </motion.a>
     </main>
   );
 }

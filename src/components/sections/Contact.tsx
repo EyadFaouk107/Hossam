@@ -34,10 +34,10 @@ export const Contact = () => {
                    <div className="shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/5 flex items-center justify-center group-hover:bg-gold group-hover:text-background transition-all duration-300">
                       <Mail size={24} className="w-5 h-5 sm:w-6 sm:h-6" />
                    </div>
-                   <div>
-                      <div className="text-[10px] uppercase font-bold text-gray-500 tracking-widest mb-1">{lang === 'ar' ? 'البريد الإلكتروني' : 'Email'}</div>
-                      <div className="text-lg sm:text-xl font-bold break-all">hossam@youseffitness.com</div>
-                   </div>
+                    <div>
+                       <div className="text-[10px] uppercase font-bold text-gray-500 tracking-widest mb-1">{lang === 'ar' ? 'البريد الإلكتروني' : 'Email'}</div>
+                       <div className="text-lg sm:text-xl font-bold break-all">eyadfarouk539@gmail.com</div>
+                    </div>
                 </div>
                 <div className={`flex items-center gap-4 sm:gap-6 group ${lang === 'ar' ? 'text-right flex-row-reverse' : 'text-left'}`}>
                    <div className="shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/5 flex items-center justify-center group-hover:bg-gold group-hover:text-background transition-all duration-300">
@@ -131,18 +131,6 @@ export const Contact = () => {
         </div>
       </div>
 
-      {/* Floating WhatsApp Button */}
-      <motion.a
-        href="https://wa.me/201116214309"
-        target="_blank"
-        rel="noopener noreferrer"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        whileHover={{ scale: 1.1 }}
-        className={`fixed z-50 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-2xl shadow-[#25D366]/40 ${lang === 'ar' ? 'bottom-24 left-4 sm:bottom-10 sm:left-10' : 'bottom-24 right-4 sm:bottom-10 sm:right-10'}`}
-      >
-        <MessageCircle size={28} className="sm:w-8 sm:h-8" />
-      </motion.a>
     </section>
   );
 };

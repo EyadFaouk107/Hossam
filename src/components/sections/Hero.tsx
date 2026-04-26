@@ -116,7 +116,7 @@ export const Hero = () => {
                   ))}
                 </div>
                 <span className={`text-[10px] font-bold text-gray-400 uppercase tracking-widest ${lang === 'ar' ? 'text-right' : 'text-left'}`}>
-                  {lang === 'ar' ? (<>أكثر من ٥٠٠ عميل<br />تحولوا للأفضل</>) : (<>500+ Clients<br />Transformed</>)}
+                  {t.hero.stats.transformed}
                 </span>
               </div>
             </motion.div>
@@ -129,15 +129,15 @@ export const Hero = () => {
               className="grid grid-cols-3 gap-8 sm:gap-12 border-t border-white/10 pt-10 w-full max-w-2xl"
             >
               <div className={lang === 'ar' ? 'text-right' : ''}>
-                <div className="text-gold text-2xl sm:text-4xl font-black font-display tracking-tighter">12+</div>
+                <div className="text-gold text-2xl sm:text-4xl font-black font-display tracking-tighter">8+</div>
                 <div className="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-widest font-bold">
-                  {lang === 'ar' ? 'سنوات خبرة' : 'Years Exp'}
+                  {t.hero.stats.years}
                 </div>
               </div>
               <div className={lang === 'ar' ? 'text-right' : ''}>
-                <div className="text-gold text-2xl sm:text-4xl font-black font-display tracking-tighter">98%</div>
+                <div className="text-gold text-2xl sm:text-4xl font-black font-display tracking-tighter">95%</div>
                 <div className="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-widest font-bold">
-                  {lang === 'ar' ? 'نسبة نجاح' : 'Success'}
+                  {t.hero.stats.success}
                 </div>
               </div>
               <div className={lang === 'ar' ? 'text-right' : ''}>

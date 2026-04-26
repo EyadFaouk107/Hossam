@@ -68,8 +68,14 @@ export const Navbar = () => {
             ))}
           </div>
           
-          <Button variant="outline" className="px-6 py-2 border-gold text-gold text-xs font-bold uppercase tracking-widest hover:bg-gold hover:text-black">
-            {t.nav.clientPortal}
+          <Button 
+            href="https://wa.me/201116214309"
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="outline" 
+            className="px-6 py-2 border-gold text-gold text-xs font-bold uppercase tracking-widest hover:bg-gold hover:text-black"
+          >
+            {t.nav.bookCall}
           </Button>
           
           <div className="flex items-center gap-1 bg-white/5 p-1 rounded-full border border-white/10">

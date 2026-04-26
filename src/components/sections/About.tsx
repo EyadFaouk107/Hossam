@@ -9,7 +9,7 @@ export const About = () => {
   const stats = [
     { label: t.about.stats.clients, value: "500+" },
     { label: t.about.stats.success, value: "95%" },
-    { label: t.about.stats.exp, value: "8 Yrs" },
+    { label: t.about.stats.exp, value: "8+ Yrs" },
     { label: t.about.stats.certs, value: "12+" },
   ];
 
