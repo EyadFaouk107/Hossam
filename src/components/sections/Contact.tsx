@@ -1,10 +1,44 @@
 import { motion } from 'motion/react';
-import { Instagram, Send, Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
+import { Instagram, Send, Mail, Phone, MapPin, MessageCircle, CheckCircle2 } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { useLanguage } from '../../hooks/useLanguage';
+import { useState, FormEvent, ChangeEvent } from 'react';
 
 export const Contact = () => {
   const { lang, t } = useLanguage();
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    goal: '',
+    message: ''
+  });
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    setStatus('sending');
+
+    const message = `New Coaching Inquiry\n\nName: ${formData.name}\nEmail: ${formData.email}\nGoal: ${formData.goal}\n\nMessage:\n${formData.message}`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/201116214309?text=${encodedMessage}`;
+
+    window.open(whatsappUrl, '_blank');
+    
+    setStatus('success');
+    setFormData({
+      name: '',
+      email: '',
+      goal: '',
+      message: ''
+    });
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
 
   return (
     <section id="contact" className={`py-32 px-6 bg-background relative overflow-hidden ${lang === 'ar' ? 'font-arabic' : ''}`}>
@@ -36,7 +70,7 @@ export const Contact = () => {
                    </div>
                     <div>
                        <div className="text-[10px] uppercase font-bold text-gray-500 tracking-widest mb-1">{lang === 'ar' ? 'البريد الإلكتروني' : 'Email'}</div>
-                       <div className="text-lg sm:text-xl font-bold break-all">eyadfarouk539@gmail.com</div>
+                       <div className="text-lg sm:text-xl font-bold break-all">hossam@gmail.com</div>
                     </div>
                 </div>
                 <div className={`flex items-center gap-4 sm:gap-6 group ${lang === 'ar' ? 'text-right flex-row-reverse' : 'text-left'}`}>
@@ -78,54 +112,102 @@ export const Contact = () => {
              viewport={{ once: true }}
              className="relative p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] bg-white/5 border border-white/5"
           >
-             <form className={`space-y-6 ${lang === 'ar' ? 'text-right' : ''}`}>
-                <div className="grid sm:grid-cols-2 gap-6">
-                   <div className="space-y-2">
-                      <label className={`text-[10px] uppercase font-bold tracking-widest text-gray-500 ${lang === 'ar' ? 'mr-2' : 'ml-2'}`}>
-                        {lang === 'ar' ? 'الاسم الكامل' : 'Full Name'}
-                      </label>
-                      <input 
-                        type="text" 
-                        placeholder={lang === 'ar' ? 'أحمد محمد' : 'John Doe'} 
-                        className={`w-full px-5 py-3.5 sm:px-6 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/5 focus:border-gold/50 outline-none transition-colors font-medium text-sm ${lang === 'ar' ? 'text-right' : ''}`}
-                      />
-                   </div>
-                   <div className="space-y-2">
-                      <label className={`text-[10px] uppercase font-bold tracking-widest text-gray-500 ${lang === 'ar' ? 'mr-2' : 'ml-2'}`}>
-                        {lang === 'ar' ? 'البريد الإلكتروني' : 'Email Address'}
-                      </label>
-                      <input 
-                        type="email" 
-                        placeholder="john@example.com" 
-                        className={`w-full px-5 py-3.5 sm:px-6 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/5 focus:border-gold/50 outline-none transition-colors font-medium text-sm ${lang === 'ar' ? 'text-right' : ''}`}
-                      />
-                   </div>
-                </div>
-                <div className="space-y-2">
-                   <label className={`text-[10px] uppercase font-bold tracking-widest text-gray-500 ${lang === 'ar' ? 'mr-2' : 'ml-2'}`}>
-                    {lang === 'ar' ? 'الهدف الرئيسي' : 'Main Goal'}
-                   </label>
-                   <select className={`w-full px-5 py-3.5 sm:px-6 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/5 focus:border-gold/50 outline-none transition-colors font-medium text-sm text-gray-400 ${lang === 'ar' ? 'text-right' : ''}`}>
-                      <option>{lang === 'ar' ? 'خسارة الدهون ونحت الجسم' : 'Fat Loss & Shredding'}</option>
-                      <option>{lang === 'ar' ? 'زيادة الكتلة العضلية' : 'Muscle Gain & Bulking'}</option>
-                      <option>{lang === 'ar' ? 'إعادة تشكيل الجسم' : 'Body Recomposition'}</option>
-                      <option>{lang === 'ar' ? 'تجهيز لبطولة' : 'Comp Prep'}</option>
-                   </select>
-                </div>
-                <div className="space-y-2">
-                   <label className={`text-[10px] uppercase font-bold tracking-widest text-gray-500 ${lang === 'ar' ? 'mr-2' : 'ml-2'}`}>
-                    {lang === 'ar' ? 'الرسالة' : 'Message'}
-                   </label>
-                   <textarea 
-                     rows={4}
-                     placeholder={lang === 'ar' ? 'أخبرني عن الصعوبات التي تواجهها حالياً...' : 'Tell me about your current struggle...'} 
-                     className={`w-full px-5 py-3.5 sm:px-6 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/5 focus:border-gold/50 outline-none transition-colors font-medium text-sm ${lang === 'ar' ? 'text-right' : ''}`}
-                   />
-                </div>
-                <Button type="submit" className="w-full py-4 text-xs">
-                   {lang === 'ar' ? 'إرسال الرسالة' : 'Send Message'} <Send size={16} className={lang === 'ar' ? 'mr-2 rotate-180' : 'ml-2'} />
-                </Button>
-             </form>
+             {status === 'success' ? (
+               <div className="h-full flex flex-col items-center justify-center text-center py-10">
+                 <motion.div
+                   initial={{ scale: 0 }}
+                   animate={{ scale: 1 }}
+                   className="w-20 h-20 rounded-full bg-gold/20 flex items-center justify-center text-gold mb-6"
+                 >
+                   <CheckCircle2 size={40} />
+                 </motion.div>
+                 <h3 className="text-2xl font-display font-black mb-4 uppercase tracking-tight">
+                   {lang === 'ar' ? 'تم الإرسال بنجاح!' : 'Message Sent!'}
+                 </h3>
+                 <p className="text-gray-400 mb-8 max-w-sm">
+                   {lang === 'ar' 
+                     ? 'سأقوم بمراجعة طلبك والتواصل معك عبر واتساب في أقرب وقت ممكن.' 
+                     : "I'll review your inquiry and get back to you on WhatsApp as soon as possible."}
+                 </p>
+                 <Button 
+                   onClick={() => setStatus('idle')}
+                   variant="outline"
+                   className="px-10"
+                 >
+                   {lang === 'ar' ? 'إرسال رسالة أخرى' : 'Send Another'}
+                 </Button>
+               </div>
+             ) : (
+               <form onSubmit={handleSubmit} className={`space-y-6 ${lang === 'ar' ? 'text-right' : ''}`}>
+                  <div className="grid sm:grid-cols-2 gap-6">
+                     <div className="space-y-2">
+                        <label className={`text-[10px] uppercase font-bold tracking-widest text-gray-500 ${lang === 'ar' ? 'mr-2' : 'ml-2'}`}>
+                          {lang === 'ar' ? 'الاسم الكامل' : 'Full Name'}
+                        </label>
+                        <input 
+                          type="text" 
+                          name="name"
+                          required
+                          value={formData.name}
+                          onChange={handleChange}
+                          placeholder={lang === 'ar' ? 'أحمد محمد' : 'John Doe'} 
+                          className={`w-full px-5 py-3.5 sm:px-6 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/5 focus:border-gold/50 outline-none transition-colors font-medium text-sm ${lang === 'ar' ? 'text-right' : ''}`}
+                        />
+                     </div>
+                     <div className="space-y-2">
+                        <label className={`text-[10px] uppercase font-bold tracking-widest text-gray-500 ${lang === 'ar' ? 'mr-2' : 'ml-2'}`}>
+                          {lang === 'ar' ? 'البريد الإلكتروني' : 'Email Address'}
+                        </label>
+                        <input 
+                          type="email" 
+                          name="email"
+                          required
+                          value={formData.email}
+                          onChange={handleChange}
+                          placeholder="john@example.com" 
+                          className={`w-full px-5 py-3.5 sm:px-6 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/5 focus:border-gold/50 outline-none transition-colors font-medium text-sm ${lang === 'ar' ? 'text-right' : ''}`}
+                        />
+                     </div>
+                  </div>
+                  <div className="space-y-2">
+                     <label className={`text-[10px] uppercase font-bold tracking-widest text-gray-500 ${lang === 'ar' ? 'mr-2' : 'ml-2'}`}>
+                      {lang === 'ar' ? 'الهدف الرئيسي' : 'Main Goal'}
+                     </label>
+                     <select 
+                       name="goal"
+                       required
+                       value={formData.goal}
+                       onChange={handleChange}
+                       className={`w-full px-5 py-3.5 sm:px-6 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/5 focus:border-gold/50 outline-none transition-colors font-medium text-sm text-gray-400 ${lang === 'ar' ? 'text-right' : ''}`}
+                     >
+                        <option value="" disabled>{lang === 'ar' ? 'اختر هدفك' : 'Select your goal'}</option>
+                        <option value="Fat Loss">{lang === 'ar' ? 'خسارة الدهون ونحت الجسم' : 'Fat Loss & Shredding'}</option>
+                        <option value="Muscle Gain">{lang === 'ar' ? 'زيادة الكتلة العضلية' : 'Muscle Gain & Bulking'}</option>
+                        <option value="Body Recomposition">{lang === 'ar' ? 'إعادة تشكيل الجسم' : 'Body Recomposition'}</option>
+                        <option value="Competition Prep">{lang === 'ar' ? 'تجهيز لبطولة' : 'Comp Prep'}</option>
+                     </select>
+                  </div>
+                  <div className="space-y-2">
+                     <label className={`text-[10px] uppercase font-bold tracking-widest text-gray-500 ${lang === 'ar' ? 'mr-2' : 'ml-2'}`}>
+                      {lang === 'ar' ? 'الرسالة' : 'Message'}
+                     </label>
+                     <textarea 
+                       rows={4}
+                       name="message"
+                       required
+                       value={formData.message}
+                       onChange={handleChange}
+                       placeholder={lang === 'ar' ? 'أخبرني عن الصعوبات التي تواجهها حالياً...' : 'Tell me about your current struggle...'} 
+                       className={`w-full px-5 py-3.5 sm:px-6 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/5 focus:border-gold/50 outline-none transition-colors font-medium text-sm ${lang === 'ar' ? 'text-right' : ''}`}
+                     />
+                  </div>
+                  <Button type="submit" disabled={status === 'sending'} className="w-full py-4 text-xs">
+                     {status === 'sending' ? (lang === 'ar' ? 'جاري الإرسال...' : 'Sending...') : (lang === 'ar' ? 'إرسال الرسالة' : 'Send Message')} 
+                     {!status && <Send size={16} className={lang === 'ar' ? 'mr-2 rotate-180' : 'ml-2'} />}
+                     {status !== 'sending' && <Send size={16} className={lang === 'ar' ? 'mr-2 rotate-180' : 'ml-2'} />}
+                  </Button>
+               </form>
+             )}
           </motion.div>
 
         </div>

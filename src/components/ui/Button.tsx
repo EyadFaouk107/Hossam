@@ -10,6 +10,7 @@ interface ButtonProps {
   href?: string;
   target?: string;
   rel?: string;
+  disabled?: boolean;
 }
 
 export const Button = ({ 
@@ -20,7 +21,8 @@ export const Button = ({
   type = 'button',
   href,
   target,
-  rel
+  rel,
+  disabled
 }: ButtonProps) => {
   const baseStyles = 'px-8 py-4 font-display font-black text-sm uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 group relative overflow-hidden active:scale-95';
   
@@ -41,10 +43,10 @@ export const Button = ({
 
   const componentProps = href 
     ? { ...commonProps, href, target, rel } 
-    : { ...commonProps, type };
+    : { ...commonProps, type, disabled };
 
   return (
-    <Component {...(componentProps as any)}>
+    <Component {...(componentProps as any)} disabled={disabled}>
       <span className="relative z-10">{children}</span>
       {variant === 'primary' && (
         <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />

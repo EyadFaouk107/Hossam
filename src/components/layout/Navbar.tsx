@@ -69,6 +69,14 @@ export const Navbar = () => {
           </div>
           
           <Button 
+            href="#contact"
+            variant="outline" 
+            className="px-6 py-2 border-white/20 text-white text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black"
+          >
+            {t.nav.clientPortal}
+          </Button>
+
+          <Button 
             href="https://wa.me/201116214309"
             target="_blank"
             rel="noopener noreferrer"
@@ -123,10 +131,19 @@ export const Navbar = () => {
             </a>
           ))}
           <Button 
+            href="#contact"
+            variant="outline"
+            className="w-full"
+            onClick={() => setIsOpen(false)}
+          >
+            {t.nav.clientPortal}
+          </Button>
+
+          <Button 
             href="https://wa.me/201116214309"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full mt-4"
+            className="w-full"
           >
             {t.nav.bookCall}
           </Button>

@@ -147,10 +147,17 @@ export const translations = {
       subtitle: "Seats are limited to maintaining the highest standard of coaching. Apply today to secure your spot in the next intake.",
       items: [
         { label: "WhatsApp", value: "+20 111 621 4309" },
-        { label: "Email", value: "eyadfarouk539@gmail.com" },
+        { label: "Email", value: "hossam@gmail.com" },
         { label: "Instagram", value: "@j0e309" }
       ]
-    }
+    },
+    finalCta: {
+      title: "DON'T DEBATE.",
+      titleGold: "JUST EVOLVE.",
+      subtitle: "The physique you want is on the other side of a decision. Make it today.",
+      btn: "Start Your Journey Now"
+    },
+    mobileCta: "Book Free Call Now"
   },
   ar: {
     nav: {
@@ -299,9 +306,16 @@ export const translations = {
       subtitle: "المقاعد محدودة لضمان أعلى معايير التدريب. ابدأ اليوم لحجز مكانك في الدفعة القادمة.",
       items: [
         { label: "واتساب", value: "+20 111 621 4309" },
-        { label: "إيميل", value: "eyadfarouk539@gmail.com" },
+        { label: "إيميل", value: "hossam@gmail.com" },
         { label: "انستجرام", value: "@j0e309" }
       ]
-    }
+    },
+    finalCta: {
+      title: "لا تتردد.",
+      titleGold: "فقط تطور.",
+      subtitle: "الجسم الذي تريده يبدأ بقرار واحد. اتخذه اليوم.",
+      btn: "ابدأ رحلتك الآن"
+    },
+    mobileCta: "احجز مكالمتك المجانية الآن"
   }
 };

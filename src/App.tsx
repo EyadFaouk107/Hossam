@@ -16,9 +16,10 @@ import { motion } from 'motion/react';
 import { Button } from './components/ui/Button';
 import { MessageCircle } from 'lucide-react';
 import { useLanguage } from './hooks/useLanguage';
+import { ScrollToTop } from './components/ui/ScrollToTop';
 
 export default function App() {
-  const { lang } = useLanguage();
+  const { lang, t } = useLanguage();
   return (
     <main className="relative bg-background text-foreground selection:bg-gold selection:text-background font-sans min-h-screen border-x-0 md:border-8 border-[#1a1a1a] overflow-x-hidden">
       {/* Geometric Background Overlays */}
@@ -57,11 +58,11 @@ export default function App() {
              viewport={{ once: true }}
            >
               <h2 className="text-5xl md:text-8xl font-display font-black mb-8 leading-[0.85] uppercase tracking-tighter">
-                DON'T DEBATE. <br />
-                <span className="gold-text-gradient">JUST EVOLVE.</span>
+                {t.finalCta.title} <br />
+                <span className="gold-text-gradient">{t.finalCta.titleGold}</span>
               </h2>
               <p className="text-gray-400 text-xl md:text-2xl mb-12 max-w-2xl mx-auto font-medium">
-                The physique you want is on the other side of a decision. Make it today.
+                {t.finalCta.subtitle}
               </p>
               <Button 
                 href="https://wa.me/201116214309"
@@ -69,7 +70,7 @@ export default function App() {
                 rel="noopener noreferrer"
                 className="px-16 py-6 text-lg"
               >
-                Start Your Journey Now
+                {t.finalCta.btn}
               </Button>
            </motion.div>
         </div>
@@ -89,11 +90,12 @@ export default function App() {
            rel="noopener noreferrer"
            className="w-full py-4 text-xs"
          >
-           Book Free Call Now
+           {t.mobileCta}
          </Button>
       </div>
       </div>
 
+      <ScrollToTop />
       <motion.a 
         href="https://wa.me/201116214309"
         target="_blank"
