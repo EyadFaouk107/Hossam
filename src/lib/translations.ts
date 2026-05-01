@@ -149,7 +149,37 @@ export const translations = {
         { label: "WhatsApp", value: "+20 111 621 4309" },
         { label: "Email", value: "hossam@gmail.com" },
         { label: "Instagram", value: "@j0e309" }
-      ]
+      ],
+      fields: {
+        name: "Full Name",
+        email: "Email Address",
+        location: "Current Location",
+        age: "Age",
+        experience: {
+          label: "Training Experience",
+          beginner: "Beginner",
+          intermediate: "Intermediate",
+          advanced: "Advanced"
+        },
+        coachBefore: {
+          label: "Have you worked with a coach before?",
+          yes: "Yes",
+          no: "No"
+        },
+        goals: {
+          label: "What is your goal?",
+          muscle: "Muscle Gain",
+          fat: "Fat Loss",
+          fitness: "Fitness",
+          comp: "Competition Preparation"
+        },
+        notes: "Additional Notes",
+        submit: "Send Message",
+        sending: "Sending...",
+        selectGoal: "Select your goal",
+        success: "Message Sent!",
+        successDesc: "I'll review your inquiry and get back to you on WhatsApp as soon as possible."
+      }
     },
     finalCta: {
       title: "DON'T DEBATE.",
@@ -308,7 +338,37 @@ export const translations = {
         { label: "واتساب", value: "+20 111 621 4309" },
         { label: "إيميل", value: "hossam@gmail.com" },
         { label: "انستجرام", value: "@j0e309" }
-      ]
+      ],
+      fields: {
+        name: "الاسم الكامل",
+        email: "البريد الإلكتروني",
+        location: "الموقع الحالي",
+        age: "العمر",
+        experience: {
+          label: "الخبرة التدريبية",
+          beginner: "مبتدئ",
+          intermediate: "متوسط",
+          advanced: "متقدم"
+        },
+        coachBefore: {
+          label: "هل عملت مع مدرب من قبل؟",
+          yes: "نعم",
+          no: "لا"
+        },
+        goals: {
+          label: "ما هو هدفك؟",
+          muscle: "زيادة العضلات",
+          fat: "خسارة الدهون",
+          fitness: "اللياقة البدنية",
+          comp: "التجهيز للبطولات"
+        },
+        notes: "ملاحظات إضافية",
+        submit: "إرسال الرسالة",
+        sending: "جاري الإرسال...",
+        selectGoal: "اختر هدفك الرئيسي",
+        success: "تم الإرسال بنجاح!",
+        successDesc: "سأقوم بمراجعة طلبك والتواصل معك عبر واتساب في أقرب وقت ممكن."
+      }
     },
     finalCta: {
       title: "لا تتردد.",

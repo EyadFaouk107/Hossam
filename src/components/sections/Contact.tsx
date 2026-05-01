@@ -10,7 +10,11 @@ export const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    goal: '',
+    location: '',
+    age: '',
+    experience: 'Intermediate',
+    coachBefore: 'no',
+    goals: [] as string[],
     message: ''
   });
 
@@ -18,7 +22,8 @@ export const Contact = () => {
     e.preventDefault();
     setStatus('sending');
 
-    const message = `New Coaching Inquiry\n\nName: ${formData.name}\nEmail: ${formData.email}\nGoal: ${formData.goal}\n\nMessage:\n${formData.message}`;
+    const goalsText = formData.goals.length > 0 ? formData.goals.join(', ') : 'None specified';
+    const message = `New Coaching Inquiry\n\nName: ${formData.name}\nEmail: ${formData.email}\nLocation: ${formData.location}\nAge: ${formData.age}\nExperience: ${formData.experience}\nWorked with Coach Before: ${formData.coachBefore}\nGoals: ${goalsText}\n\nMessage/Notes:\n${formData.message}`;
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/201116214309?text=${encodedMessage}`;
 
@@ -28,17 +33,34 @@ export const Contact = () => {
     setFormData({
       name: '',
       email: '',
-      goal: '',
+      location: '',
+      age: '',
+      experience: 'Intermediate',
+      coachBefore: 'no',
+      goals: [],
       message: ''
     });
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target;
+    
     setFormData(prev => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [name]: value
     }));
   };
+
+  const handleGoalToggle = (goal: string) => {
+    setFormData(prev => ({
+      ...prev,
+      goals: prev.goals.includes(goal)
+        ? prev.goals.filter(g => g !== goal)
+        : [...prev.goals, goal]
+    }));
+  };
+
+  const f = t.contact.fields;
 
   return (
     <section id="contact" className={`py-32 px-6 bg-background relative overflow-hidden ${lang === 'ar' ? 'font-arabic' : ''}`}>
@@ -122,12 +144,10 @@ export const Contact = () => {
                    <CheckCircle2 size={40} />
                  </motion.div>
                  <h3 className="text-2xl font-display font-black mb-4 uppercase tracking-tight">
-                   {lang === 'ar' ? 'تم الإرسال بنجاح!' : 'Message Sent!'}
+                   {f.success}
                  </h3>
                  <p className="text-gray-400 mb-8 max-w-sm">
-                   {lang === 'ar' 
-                     ? 'سأقوم بمراجعة طلبك والتواصل معك عبر واتساب في أقرب وقت ممكن.' 
-                     : "I'll review your inquiry and get back to you on WhatsApp as soon as possible."}
+                   {f.successDesc}
                  </p>
                  <Button 
                    onClick={() => setStatus('idle')}
@@ -142,7 +162,7 @@ export const Contact = () => {
                   <div className="grid sm:grid-cols-2 gap-6">
                      <div className="space-y-2">
                         <label className={`text-[10px] uppercase font-bold tracking-widest text-gray-500 ${lang === 'ar' ? 'mr-2' : 'ml-2'}`}>
-                          {lang === 'ar' ? 'الاسم الكامل' : 'Full Name'}
+                          {f.name}
                         </label>
                         <input 
                           type="text" 
@@ -156,7 +176,7 @@ export const Contact = () => {
                      </div>
                      <div className="space-y-2">
                         <label className={`text-[10px] uppercase font-bold tracking-widest text-gray-500 ${lang === 'ar' ? 'mr-2' : 'ml-2'}`}>
-                          {lang === 'ar' ? 'البريد الإلكتروني' : 'Email Address'}
+                          {f.email}
                         </label>
                         <input 
                           type="email" 
@@ -169,27 +189,114 @@ export const Contact = () => {
                         />
                      </div>
                   </div>
+
+                  <div className="grid sm:grid-cols-2 gap-6">
+                     <div className="space-y-2">
+                        <label className={`text-[10px] uppercase font-bold tracking-widest text-gray-500 ${lang === 'ar' ? 'mr-2' : 'ml-2'}`}>
+                          {f.location}
+                        </label>
+                        <input 
+                          type="text" 
+                          name="location"
+                          required
+                          value={formData.location}
+                          onChange={handleChange}
+                          placeholder={lang === 'ar' ? 'القاهرة، مصر' : 'Cairo, Egypt'} 
+                          className={`w-full px-5 py-3.5 sm:px-6 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/5 focus:border-gold/50 outline-none transition-colors font-medium text-sm ${lang === 'ar' ? 'text-right' : ''}`}
+                        />
+                     </div>
+                     <div className="space-y-2">
+                        <label className={`text-[10px] uppercase font-bold tracking-widest text-gray-500 ${lang === 'ar' ? 'mr-2' : 'ml-2'}`}>
+                          {f.age}
+                        </label>
+                        <input 
+                          type="number" 
+                          name="age"
+                          required
+                          value={formData.age}
+                          onChange={handleChange}
+                          placeholder="25" 
+                          className={`w-full px-5 py-3.5 sm:px-6 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/5 focus:border-gold/50 outline-none transition-colors font-medium text-sm ${lang === 'ar' ? 'text-right' : ''}`}
+                        />
+                     </div>
+                  </div>
+
                   <div className="space-y-2">
                      <label className={`text-[10px] uppercase font-bold tracking-widest text-gray-500 ${lang === 'ar' ? 'mr-2' : 'ml-2'}`}>
-                      {lang === 'ar' ? 'الهدف الرئيسي' : 'Main Goal'}
+                      {f.experience.label}
                      </label>
                      <select 
-                       name="goal"
+                       name="experience"
                        required
-                       value={formData.goal}
+                       value={formData.experience}
                        onChange={handleChange}
                        className={`w-full px-5 py-3.5 sm:px-6 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/5 focus:border-gold/50 outline-none transition-colors font-medium text-sm text-gray-400 ${lang === 'ar' ? 'text-right' : ''}`}
                      >
-                        <option value="" disabled>{lang === 'ar' ? 'اختر هدفك' : 'Select your goal'}</option>
-                        <option value="Fat Loss">{lang === 'ar' ? 'خسارة الدهون ونحت الجسم' : 'Fat Loss & Shredding'}</option>
-                        <option value="Muscle Gain">{lang === 'ar' ? 'زيادة الكتلة العضلية' : 'Muscle Gain & Bulking'}</option>
-                        <option value="Body Recomposition">{lang === 'ar' ? 'إعادة تشكيل الجسم' : 'Body Recomposition'}</option>
-                        <option value="Competition Prep">{lang === 'ar' ? 'تجهيز لبطولة' : 'Comp Prep'}</option>
+                        <option value="Beginner">{f.experience.beginner}</option>
+                        <option value="Intermediate">{f.experience.intermediate}</option>
+                        <option value="Advanced">{f.experience.advanced}</option>
                      </select>
                   </div>
+
+                  <div className="space-y-3">
+                     <label className={`text-[10px] uppercase font-bold tracking-widest text-gray-500 ${lang === 'ar' ? 'mr-2' : 'ml-2'}`}>
+                      {f.coachBefore.label}
+                     </label>
+                     <div className={`flex gap-6 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
+                        {[
+                          { id: 'yes', label: f.coachBefore.yes },
+                          { id: 'no', label: f.coachBefore.no }
+                        ].map((opt) => (
+                          <label key={opt.id} className="flex items-center gap-3 cursor-pointer group">
+                             <div className="relative flex items-center justify-center">
+                                <input 
+                                  type="radio" 
+                                  name="coachBefore" 
+                                  value={opt.id}
+                                  checked={formData.coachBefore === opt.id}
+                                  onChange={handleChange}
+                                  className="peer sr-only"
+                                />
+                                <div className="w-5 h-5 rounded-full border border-white/20 peer-checked:border-gold transition-colors" />
+                                <div className="absolute w-2.5 h-2.5 rounded-full bg-gold scale-0 peer-checked:scale-100 transition-transform" />
+                             </div>
+                             <span className="text-sm font-medium text-gray-400 group-hover:text-white transition-colors">{opt.label}</span>
+                          </label>
+                        ))}
+                     </div>
+                  </div>
+
+                  <div className="space-y-3">
+                     <label className={`text-[10px] uppercase font-bold tracking-widest text-gray-500 ${lang === 'ar' ? 'mr-2' : 'ml-2'}`}>
+                      {f.goals.label}
+                     </label>
+                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {[
+                          { id: 'Muscle Gain', label: f.goals.muscle },
+                          { id: 'Fat Loss', label: f.goals.fat },
+                          { id: 'Fitness', label: f.goals.fitness },
+                          { id: 'Competition Prep', label: f.goals.comp }
+                        ].map((goal) => (
+                          <label key={goal.id} className={`flex items-center gap-3 cursor-pointer group p-3 rounded-xl border border-white/5 hover:border-gold/30 transition-all ${formData.goals.includes(goal.id) ? 'bg-gold/5 border-gold/50' : 'bg-white/2'}`}>
+                             <div className="relative flex items-center justify-center">
+                                <input 
+                                  type="checkbox" 
+                                  checked={formData.goals.includes(goal.id)}
+                                  onChange={() => handleGoalToggle(goal.id)}
+                                  className="peer sr-only"
+                                />
+                                <div className="w-5 h-5 rounded-md border border-white/20 peer-checked:border-gold transition-colors" />
+                                <CheckCircle2 size={12} className="absolute text-gold scale-0 peer-checked:scale-100 transition-transform" />
+                             </div>
+                             <span className="text-xs sm:text-sm font-medium text-gray-400 group-hover:text-white transition-colors">{goal.label}</span>
+                          </label>
+                        ))}
+                     </div>
+                  </div>
+
                   <div className="space-y-2">
                      <label className={`text-[10px] uppercase font-bold tracking-widest text-gray-500 ${lang === 'ar' ? 'mr-2' : 'ml-2'}`}>
-                      {lang === 'ar' ? 'الرسالة' : 'Message'}
+                      {f.notes}
                      </label>
                      <textarea 
                        rows={4}
@@ -202,8 +309,7 @@ export const Contact = () => {
                      />
                   </div>
                   <Button type="submit" disabled={status === 'sending'} className="w-full py-4 text-xs">
-                     {status === 'sending' ? (lang === 'ar' ? 'جاري الإرسال...' : 'Sending...') : (lang === 'ar' ? 'إرسال الرسالة' : 'Send Message')} 
-                     {!status && <Send size={16} className={lang === 'ar' ? 'mr-2 rotate-180' : 'ml-2'} />}
+                     {status === 'sending' ? f.sending : f.submit} 
                      {status !== 'sending' && <Send size={16} className={lang === 'ar' ? 'mr-2 rotate-180' : 'ml-2'} />}
                   </Button>
                </form>
